@@ -1,7 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-@author:XuMing(xuming624@qq.com)
-@description: 
+这段代码定义了一个Conversation类和一个全局注册表conv_templates，用于管理语言模型的不同会话模板。下面是代码的细分:
+
+Conversation类是一个包含以下字段的数据类:
+
+name:对话模板的名称。
+system_prompt:设置上下文的初始系统提示符。
+messages:消息序列的列表，其中每个序列是一对[查询，回答]。
+roles:说话者的角色，通常是“USER”、“ASSISTANT”。
+提示:每个会话回合使用的提示格式。
+sep:匝间使用的分隔字符串。
+stop_str:文本生成的可选停止标记(默认为"</s>")。
+该类提供了获取提示符(get_prompt)、获取完整对话框(get_dialog)和附加新消息(append_message)的方法。
+
+register_conv_template函数用于在全局conv_templates字典中注册一个新的Conversation实例。
+
+代码为不同的语言模型定义了几个预定义的会话模板，如Vicuna、Alpaca、baihuan、ChatGLM、Phoenix、BELLE、Aquila、Intern、StarChat、LLaMa2、LLaMa3、Chinese LLaMa2、Mistral、XVERSE、QWen、Deepseek、DeepseekCoder、Yi、Orion、Cohere和QWen(用于代码生成)。
+
+get_conv_template函数根据提供的名称从conv_templates字典中检索特定的Conversation实例。
+
+此代码可能用于与不同语言模型交互的大型系统中。通过定义和注册对话模板，系统可以轻松地为各种模型格式化提示并管理对话历史。这些模板处理不同的格式需求，例如演讲者角色、提示符、分隔符和停止令牌，从而更容易一致地使用多个模型。
 """
 
 from dataclasses import dataclass
